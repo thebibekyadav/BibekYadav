@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>My Website</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>B</span>ibek <span>Y</span>adav</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#about" data-after="About ">About</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello, <span></span></h1>
+        <h1>My Name is <span></span></h1>
+        <h1>Bibek <span></span></h1>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="bibek.png" alt="img">
+        </div>
+      </div>
+      <div class="col-right">
+        <h1 class="section-title">About <span>me</span></h1>
+       <!-- <h2> Tech Enthusiastic </h2> -->
+		<p>
+		Heyy, I'm Bibek Kumar Yadav, a native of Lahan, Siraha (Nepal).
+		I am a student and a 
+		Tech enthusiastic studying Bachelor of Computer Applications (BCA) and 
+		working toward the bright future.
+		I like hanging with my laptop because it gives the happiness that I want. 
+		I also enjoy listening music especially when I’m bored. My strengths are 
+		my positive attitude, punctuality, interpersonal skills and strong in management 
+		skills. My weakness is my emotional nature which lands me in trouble sometimes.
+	</p>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Contact Section -->
+
+  <section id="contact">
+    <div class="contact container">
+      <div>
+	<br>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+977 9805999576</h2>
+           
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>bibekyadav842@gmail.com</h2>
+           
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Lahan, Siraha</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>B</span>ibek <span>Y</span>adav</h1>
+      </div>
+      <!-- <h2>Your Complete Web Solution</h2> ---><br>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="https://www.facebook.com/bibekyadav842"><img src="https://img.icons8.com/stickers/50/000000/facebook-new--v1.png"/>"</a>
+        </div>
+        <div class="social-item">
+          <a href="https://www.instagram.com/imbibekyadav"><img src="https://img.icons8.com/stickers/100/000000/instagram-new--v2.png"/></a>
+        </div>                                    
+        <div class="social-item">
+          <a href="https://www.twitter.com/imbibekyadav"><img src="https://img.icons8.com/stickers/100/000000/twitter.png"/></a>
+        </div>
+      </div>
+      <p> ©2022 bibekyadav. All rights reserved.</p>
+    </div>
+  </section>
+  <!-- End Footer -->
+
+<!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100188401987335");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v12.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+<!-- Messenger Chat Plugin Code END -->
+
+  <script src="./app.js"></script> 
+</body>
+
+</html>
