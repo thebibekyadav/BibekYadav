@@ -264,7 +264,10 @@ p {
 
 /* End Hero Section */
 
-
+#counter{
+	width: 50px;
+	
+}
 
 /* About Section */
 #about .about {
