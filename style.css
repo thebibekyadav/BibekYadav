@@ -65,10 +65,10 @@ p {
 .brand h1 {
 	font-size: 3rem;
 	text-transform: uppercase;
-	color: white;                 /* title remaining first letter*/
+	color: #003594	;                 /* title remaining first letter*/
 }
 .brand h1 span {
-	color: green;     		/*title first letter*/
+	color: 	#DD0C39;     		/*title first letter*/
 }
 
 /* Header section */
