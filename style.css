@@ -367,6 +367,99 @@ p {
 }
 /*End contact Section */
 
+/*Quote Section Start  */
+.quote-container {
+    display: flex;
+    background: #708871;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    color: #FF8225;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.quote-container::before,
+.quote-container::after {
+    content: '\201C';
+    font-size: 250px;
+    color: #201E43;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+}
+
+.quote-container::before {
+    top: 10px;
+    left: 10px;
+}
+
+.quote-container::after {
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(180deg);
+}
+
+.quote {
+    font-size: 70px;
+    line-height: 1.25;
+    font-family: "Libre Baskerville", serif;
+    text-transform: uppercase;
+    word-spacing: 20px;
+    font-weight: bold;
+    z-index: 1;
+    margin: 0;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+    .quote-container::before,
+    .quote-container::after {
+        font-size: 200px;
+    }
+    .quote {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .quote-container::before,
+    .quote-container::after {
+        font-size: 150px;
+    }
+    .quote {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .quote-container::before,
+    .quote-container::after {
+        font-size: 100px;
+    }
+    .quote {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .quote-container::before,
+    .quote-container::after {
+        font-size: 75px;
+    }
+    .quote {
+        font-size: 30px;
+    }
+}
+/*Quote Section End  */
+
 /* Footer */
 #footer {
 	background-image: linear-gradient(60deg, #73787d 0%, #485563 100%);
