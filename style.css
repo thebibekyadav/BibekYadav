@@ -378,7 +378,7 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
-    color: #FF8225;
+    color: #FF8225 !important;
     position: relative;
     padding: 20px;
     box-sizing: border-box;
@@ -389,7 +389,7 @@ p {
 .quote-container::after {
     content: '\201C';
     font-size: 250px;
-    color: #201E43;
+    color: #003594;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
 }
