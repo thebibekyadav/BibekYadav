@@ -376,7 +376,6 @@ p {
     height: 40vh;
     width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
     text-align: center;
     color: #FF8225 !important;
     position: relative;
