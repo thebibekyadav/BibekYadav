@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibek Yadav — QA Engineer &amp; Web Developer</title>
+<link rel="icon" type="image/png" href="bibekydv.png">
+<meta name="description" content="Bibek Yadav — BCA graduate, aspiring QA Engineer and web developer based in Kathmandu, Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* ============ TOKENS ============ */
+  :root{
+    --bg: #0D1613;
+    --bg-alt: #121F1A;
+    --bg-raise: #17251F;
+    --text: #ECE8DE;
+    --muted: #93A69C;
+    --line: rgba(236,232,222,0.12);
+    --line-strong: rgba(236,232,222,0.22);
+    --accent: #E8A33D;
+    --accent-soft: rgba(232,163,61,0.15);
+    --accent-2: #57C1BE;
+    --accent-2-soft: rgba(87,193,190,0.15);
+    --shadow: 0 20px 60px rgba(0,0,0,0.35);
+
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max: 760px;
+    --edge: clamp(20px, 6vw, 64px);
+    --speed: 0.5s;
+  }
+
+  html.light{
+    --bg: #EEF1EF;
+    --bg-alt: #E4E9E6;
+    --bg-raise: #FFFFFF;
+    --text: #10201B;
+    --muted: #4E5F58;
+    --line: rgba(16,32,27,0.12);
+    --line-strong: rgba(16,32,27,0.22);
+    --accent: #C97F1E;
+    --accent-soft: rgba(201,127,30,0.13);
+    --accent-2: #1C8E8A;
+    --accent-2-soft: rgba(28,142,138,0.13);
+    --shadow: 0 20px 50px rgba(16,32,27,0.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background var(--speed) ease, color var(--speed) ease;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:var(--font-head);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent); color:#14100a;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001s !important; transition-duration:0.001s !important;}
+  }
+
+  /* ============ SCROLL PROGRESS ============ */
+  .progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--accent-2), var(--accent));
+    z-index:200;
+    transition:width 0.1s linear;
+  }
+
+  /* ============ TOPBAR ============ */
+  .topbar{
+    position:fixed; top:0; left:0; right:0;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px var(--edge);
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(to bottom, var(--bg) 60%, transparent);
+  }
+  .logo{
+    font-family:var(--font-mono);
+    font-size:14px;
+    letter-spacing:0.02em;
+    color:var(--muted);
+    border:1px solid var(--line-strong);
+    padding:6px 10px;
+    border-radius:4px;
+  }
+  .logo b{color:var(--text); font-weight:600;}
+  #themeToggle{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--line-strong);
+    background:var(--bg-raise);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    color:var(--text);
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  #themeToggle:hover{border-color:var(--accent); transform:rotate(-12deg);}
+  #themeToggle svg{width:18px; height:18px;}
+  #themeToggle .moon{display:none;}
+  html.light #themeToggle .sun{display:none;}
+  html.light #themeToggle .moon{display:block;}
+
+  /* ============ LAYOUT ============ */
+  main{max-width:var(--max); margin:0 auto; padding:0 var(--edge);}
+  section{padding:96px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--accent);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:18px;
+  }
+  .kicker::before{
+    content:'';
+    width:16px; height:1px;
+    background:var(--accent);
+  }
+  h2.title{font-size:clamp(24px,3.4vw,30px); font-weight:600;}
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px; padding-bottom:60px;
+    border-top:none !important;
+  }
+  .hero .eyebrow{
+    font-family:var(--font-mono);
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .status-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--accent-2);
+    box-shadow:0 0 0 3px var(--accent-2-soft);
+  }
+  .hero h1{
+    font-size:clamp(40px, 8vw, 68px);
+    font-weight:700;
+    line-height:1.02;
+    max-width:11ch;
+  }
+  .hero .role{
+    font-family:var(--font-head);
+    font-size:clamp(18px, 2.6vw, 22px);
+    color:var(--accent-2);
+    margin-top:18px;
+    font-weight:500;
+  }
+  .hero .summary{
+    margin-top:22px;
+    max-width:56ch;
+    color:var(--muted);
+    font-size:16px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-top:34px;
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:9px 14px;
+    border:1px solid var(--line-strong);
+    border-radius:100px;
+    font-size:13.5px;
+    color:var(--text);
+    background:var(--bg-raise);
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .chip:hover{border-color:var(--accent);}
+  .chip svg{width:14px; height:14px; color:var(--muted); flex-shrink:0;}
+
+  .hero-cta{
+    margin-top:44px;
+    display:flex; align-items:center; gap:18px;
+  }
+  .cta{
+    font-family:var(--font-head);
+    font-weight:600;
+    font-size:15px;
+    padding:14px 26px;
+    background:var(--accent);
+    color:#16110A;
+    border-radius:6px;
+    display:inline-block;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta:hover{transform:translateY(-2px); box-shadow:0 10px 24px var(--accent-soft);}
+  .scroll-hint{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* ============ ABOUT ============ */
+  .about-text{
+    font-size:17px;
+    color:var(--muted);
+    max-width:62ch;
+  }
+  .about-text strong{color:var(--text); font-weight:600;}
+
+  /* ============ SKILLS ============ */
+  .skill-group{margin-top:34px;}
+  .skill-group:first-of-type{margin-top:0;}
+  .skill-group h3{
+    font-size:14px;
+    font-weight:500;
+    font-family:var(--font-mono);
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px 8px 10px;
+    border:1px solid var(--line);
+    border-radius:5px;
+    font-size:14px;
+    background:var(--bg-raise);
+    overflow:hidden;
+    position:relative;
+  }
+  .tag .tick{
+    width:14px; height:14px; flex-shrink:0;
+    color:var(--accent-2);
+  }
+  .tag .tick path{
+    stroke-dasharray:20; stroke-dashoffset:20;
+    transition:stroke-dashoffset 0.5s ease;
+  }
+  .tag.in-view .tick path{stroke-dashoffset:0;}
+
+  /* ============ EXPERIENCE ============ */
+  .timeline{position:relative; margin-top:8px;}
+  .timeline::before{
+    content:'';
+    position:absolute; left:9px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line-strong);
+  }
+  .tl-item{
+    position:relative;
+    padding-left:40px;
+    padding-bottom:48px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-marker{
+    position:absolute; left:0; top:2px;
+    width:19px; height:19px;
+    border-radius:50%;
+    background:var(--bg-raise);
+    border:1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color 0.4s ease, background 0.4s ease;
+  }
+  .tl-marker svg{width:11px; height:11px;}
+  .tl-marker path{
+    stroke-dasharray:16; stroke-dashoffset:16;
+    transition:stroke-dashoffset 0.5s ease 0.15s;
+    stroke:var(--bg);
+  }
+  .tl-item.in-view .tl-marker{background:var(--accent-2); border-color:var(--accent-2);}
+  .tl-item.in-view .tl-marker path{stroke-dashoffset:0;}
+
+  .tl-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    flex-wrap:wrap; gap:6px 16px;
+  }
+  .tl-role{font-family:var(--font-head); font-size:18px; font-weight:600;}
+  .tl-date{font-family:var(--font-mono); font-size:12.5px; color:var(--muted); white-space:nowrap;}
+  .tl-org{color:var(--accent-2); font-size:14.5px; margin-top:4px; font-weight:500;}
+  .tl-loc{color:var(--muted); font-size:13.5px; margin-top:2px;}
+  .tl-bullets{margin-top:14px; padding:0; list-style:none;}
+  .tl-bullets li{
+    position:relative;
+    padding-left:16px;
+    color:var(--muted);
+    font-size:14.5px;
+    margin-top:8px;
+  }
+  .tl-bullets li::before{
+    content:'—';
+    position:absolute; left:0; top:0;
+    color:var(--line-strong);
+  }
+
+  /* ============ EDUCATION / CERTS ============ */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:8px;}
+  .split h3{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  .ed-item{margin-bottom:22px;}
+  .ed-item:last-child{margin-bottom:0;}
+  .ed-item .ed-title{font-weight:600; font-size:15.5px;}
+  .ed-item .ed-sub{color:var(--muted); font-size:13.5px; margin-top:3px;}
+  .ed-item .ed-date{font-family:var(--font-mono); color:var(--muted); font-size:12px; margin-top:5px;}
+
+  /* ============ CONTACT ============ */
+  .contact-block h2.title{margin-bottom:16px;}
+  .contact-block .about-text{margin-bottom:36px;}
+  .contact-actions{display:flex; flex-wrap:wrap; gap:14px;}
+  .contact-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 20px;
+    border:1px solid var(--line-strong);
+    border-radius:6px;
+    font-size:14.5px;
+    background:var(--bg-raise);
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .contact-btn:hover{border-color:var(--accent-2); transform:translateY(-2px);}
+  .contact-btn svg{width:16px; height:16px; color:var(--accent-2);}
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px var(--edge) 48px;
+    display:flex; flex-direction:column; align-items:center; gap:20px;
+    text-align:center;
+  }
+  .social-icons{display:flex; gap:14px;}
+  .social-icons a{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    transition:border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .social-icons a:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-3px);}
+  .social-icons svg{width:16px; height:16px;}
+  footer .copy{font-size:12.5px; color:var(--muted); font-family:var(--font-mono);}
+
+  /* ============ REVEAL SYSTEM ============ */
+  .reveal-clip{
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 0.7s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal-clip.in-view{clip-path:inset(0 0% 0 0);}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:640px){
+    section{padding:72px 0;}
+    .split{grid-template-columns:1fr; gap:32px;}
+    .hero{padding-top:100px;}
+    .tl-head{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="topbar">
+  <span class="logo"><b>Bibek Yadav</b></span>
+  <button id="themeToggle" aria-label="Toggle light and dark theme">
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.6 6.6 0 0 0 10.5 10.5z"/></svg>
+  </button>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow"><span class="status-dot"></span>Kathmandu, Nepal </p>
+    <h1>Bibek Yadav</h1>
+    <p class="role">Aspiring QA Engineer &amp; Web Developer</p>
+    <p class="summary">BCA graduate from Tribhuvan University, currently building depth in software quality assurance and testing while shipping practical web projects. I care about the gap between "it works" and "it's verified to work."</p>
+
+    <div class="contact-row">
+      <a class="chip" href="mailto:bibekyadav842@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        bibekyadav842@gmail.com
+      </a>
+      <a class="chip" href="tel:+9779768799842">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.5 4.5L8.5 9a12 12 0 0 0 6.5 6.5l1.5-2L21 15v3a2 2 0 0 1-2 2C11.5 20 4 12.5 4 5a2 2 0 0 1 2-2z"/></svg>
+        +977 976-8799842
+      </a>
+      <a class="chip" href="https://www.linkedin.com/in/thebibekyadav" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-3.5a1.9 1.9 0 0 1 3.8 0V16M12 10v6"/></svg>
+        thebibekyadav
+      </a>
+    </div>
+
+    <div class="hero-cta">
+      <a class="cta" href="#contact">Get in touch</a>
+      <span class="scroll-hint">scroll — summary below</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="kicker">About</p>
+    <h2 class="title" style="margin-bottom:22px;">Grounded in fundamentals, moving toward QA.</h2>
+    <p class="about-text">I graduated with a <strong>BCA from Tribhuvan University</strong>, where I built a working base in computer applications and software development. Since then I've split my time between hands-on IT and office operations work and self-directed learning in <strong>software quality assurance and testing</strong>. I'm drawn to the analytical, detail-checking side of building software — finding what breaks before a user does.</p>
+    <p class="about-text" style="margin-top:16px;">Alongside the technical track, I've picked up practical experience in digital marketing, graphic design, and student counselling — which mostly taught me how to communicate clearly with people who aren't engineers.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="kicker">Skills</p>
+    <h2 class="title" style="margin-bottom:30px;">What I bring to a build.</h2>
+
+    <div class="skill-group">
+      <h3>Technical / Development</h3>
+      <div class="tag-row">
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>HTML / CSS / JavaScript</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Tailwind CSS</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Laravel (PHP)</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>SQL</span>
+                <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Java</span>
+                <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Python</span>
+
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>QA &amp; Testing</h3>
+      <div class="tag-row">
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Software Testing</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Quality Assurance</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Manual Test Cases</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Regression Testing</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Performance Testing</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Bug Reporting</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>API Testing</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Database Testing</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Tools &amp; Other</h3>
+      <div class="tag-row">
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>DevOps Fundamentals</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Digital Marketing</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>IT Support</span>
+        <span class="tag"><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Graphic Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="kicker">Experience</p>
+    <h2 class="title" style="margin-bottom:30px;">Where I've worked.</h2>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <span class="tl-marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>
+        <div class="tl-head">
+          <span class="tl-role">Office Manager &amp; IT Officer</span>
+          <span class="tl-date">Oct 2024 — Jul 2026</span>
+        </div>
+        <p class="tl-org">HP Education Consultancy</p>
+        <p class="tl-loc">Naxal, Kathmandu</p>
+        <ul class="tl-bullets">
+          <li>Ran daily office operations, records, and internal systems to keep the business running smoothly.</li>
+          <li>Provided IT support across hardware, software, and networking issues for staff.</li>
+          <li>Guided students through UK university applications as a certified British Council counsellor.</li>
+          <li>Produced social media ads and marketing content for student engagement campaigns.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-marker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>
+        <div class="tl-head">
+          <span class="tl-role">Laravel Development Intern</span>
+          <span class="tl-date">Jan 2024 — Apr 2024</span>
+        </div>
+        <p class="tl-org">Techware Pvt. Ltd</p>
+        <p class="tl-loc">Biratnagar</p>
+        <ul class="tl-bullets">
+          <li>Built responsive interfaces with HTML, CSS, JavaScript, and Tailwind CSS.</li>
+          <li>Developed backend features in Laravel following MVC structure.</li>
+          <li>Worked directly with SQL databases for data creation, retrieval, and updates.</li>
+          <li>Debugged and tested application features alongside the development team.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="kicker">Education</p>
+    <div class="split">
+      <div>
+        <div class="ed-item">
+          <p class="ed-title">Bachelor's Degree, BCA</p>
+          <p class="ed-sub">Mahendra Morang Adarsh Multiple Campus, Biratnagar — Tribhuvan University</p>
+          <p class="ed-date">2019 — 2024</p>
+        </div>
+        <div class="ed-item">
+          <p class="ed-title">High School</p>
+          <p class="ed-sub">Arniko Awasiya Secondary School, Biratnagar</p>
+          <p class="ed-date">2017 — 2019</p>
+        </div>
+        <div class="ed-item">
+          <p class="ed-title">Secondary School</p>
+          <p class="ed-sub">G B Shaw, The Elite English School, Lahan</p>
+          <p class="ed-date">2017</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="education">
+    <p class="kicker">Certificates</p>
+    <div class="split">
+      <div>
+        <div class="ed-item">
+          <p class="ed-title">DevOps</p>
+          <p class="ed-sub">Foundations of DevOps practice</p>
+        </div>
+        <div class="ed-item">
+          <p class="ed-title">Getting Started with Digital Marketing</p>
+          <p class="ed-sub">Core marketing fundamentals</p>
+        </div>
+        <div class="ed-item">
+          <p class="ed-title">UK Agent &amp; Counsellor Training</p>
+          <p class="ed-sub">British Council certified counsellor</p>
+        </div>
+      </div>  
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-block">
+    <p class="kicker">Contact</p>
+    <h2 class="title">Let's talk.</h2>
+    <p class="about-text">Open to QA and Software Testing, roles in Kathmandu or remote. Reach out directly — I reply quickly.</p>
+    <div class="contact-actions">
+      <a class="contact-btn" href="mailto:bibekyadav842@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        Email me
+      </a>
+      <a class="contact-btn" href="tel:+9779768799842">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.5 4.5L8.5 9a12 12 0 0 0 6.5 6.5l1.5-2L21 15v3a2 2 0 0 1-2 2C11.5 20 4 12.5 4 5a2 2 0 0 1 2-2z"/></svg>
+        Call
+      </a>
+      <a class="contact-btn" href="https://www.linkedin.com/in/thebibekyadav" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-3.5a1.9 1.9 0 0 1 3.8 0V16M12 10v6"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="social-icons">
+    <a href="https://facebook.com/thebibekydv" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8.5h2V5.2c-.35-.05-1.54-.15-2.94-.15-2.9 0-4.9 1.77-4.9 5.02V13H6.5v3.6h2.66V22h3.7v-5.4h2.55l.4-3.6h-2.95v-2.5c0-1.04.28-1.75 1.79-1.75z"/></svg>
+    </a>
+    <a href="https://x.com/thebibekyadav" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+    </a>
+    <a href="https://instagram.com/thebibekyadav" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/thebibekyadav" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-3.5a1.9 1.9 0 0 1 3.8 0V16M12 10v6"/></svg>
+    </a>
+    <a href="https://github.com/thebibekyadav" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-2.85 17.54c.45.08.61-.2.61-.43v-1.68c-2.5.55-3.03-1.2-3.03-1.2-.41-1.04-1-1.32-1-1.32-.82-.56.06-.55.06-.55.9.06 1.38.93 1.38.93.8 1.38 2.1.98 2.61.75.08-.58.32-.98.57-1.21-2-.23-4.1-1-4.1-4.45 0-.98.35-1.79.92-2.42-.09-.23-.4-1.15.09-2.4 0 0 .75-.24 2.46.92a8.4 8.4 0 0 1 4.48 0c1.71-1.16 2.46-.92 2.46-.92.49 1.25.18 2.17.09 2.4.57.63.92 1.44.92 2.42 0 3.46-2.11 4.22-4.12 4.44.33.28.61.84.61 1.7v2.51c0 .24.16.51.62.43A9 9 0 0 0 12 3z"/></svg>
+    </a>
+  </div>
+  <p class="copy">© <span id="year"></span> Bibek Yadav. All rights reserved.</p>
+</footer>
+
+<script>
+  // Theme: default to system preference, toggle overrides
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  function setTheme(light){
+    root.classList.toggle('light', light);
+  }
+  setTheme(window.matchMedia('(prefers-color-scheme: light)').matches);
+  toggle.addEventListener('click', () => setTheme(!root.classList.contains('light')));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll progress bar
+  const bar = document.getElementById('progress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  // Reveal on scroll (timeline markers + skill ticks)
+  const observed = document.querySelectorAll('.tl-item, .tag');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting){
+        const delay = entry.target.classList.contains('tag') ? Math.min(entries.indexOf(entry) * 40, 300) : 0;
+        setTimeout(() => entry.target.classList.add('in-view'), delay);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  observed.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
